@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
+
 import { Favorites } from './pages/Favorites/Favorites'
 import { Main } from './pages/Main/Main'
 import { NotFound } from './pages/NotFound/NotFound'

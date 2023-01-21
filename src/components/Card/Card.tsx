@@ -44,9 +44,10 @@ export const Card: FC<Props> = ({
   const handleDelete = () => {
     dispatch(removeFromFavorites(id))
     dispatch(
-      cardsDataApi.util.updateQueryData('getItems', undefined, (items) =>
-        items.filter((item) => item.id !== id)
-      )
+      cardsDataApi.util.updateQueryData('getItems', undefined, (items) => {
+        const arr = items.data.filter((item) => item._id !== id)
+        return { data: arr }
+      })
     )
   }
 
@@ -63,7 +64,7 @@ export const Card: FC<Props> = ({
         {loading && <Loader className={styles.loader} />}
         <img
           className={styles.image}
-          src={item.image_link}
+          src={item.imageUrl}
           alt={item.name}
           onLoad={handleLoad}
         />
@@ -87,15 +88,16 @@ export const Card: FC<Props> = ({
                 <HeartLineMIcon className={styles.icon} />
               )}
             </span>
-            <TrashCanLineMIcon
-              onClick={handleDelete}
-              className={styles.icon}
-            ></TrashCanLineMIcon>
+            <TrashCanLineMIcon onClick={handleDelete} className={styles.icon} />
           </div>
         </div>
         <div>
           <Typography.Text tag="p" view="primary-small">
-            {item?.geo_range}
+            {item?.films.join(', ') ||
+              item?.shortFilms.join(', ') ||
+              item?.tvShows.join(', ') ||
+              item?.videoGames.join(', ') ||
+              item?.parkAttractions.join(', ')}
           </Typography.Text>
         </div>
       </div>

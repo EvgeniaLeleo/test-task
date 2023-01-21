@@ -1,6 +1,7 @@
 import { Typography } from '@alfalab/core-components/typography/component'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+
 import { Button } from '../../components/Button/Button'
 import { Gallery } from '../../components/Gallery/Gallery'
 import { useAppDispatch, useAppSelector } from '../../hook'
@@ -22,11 +23,11 @@ export const Main = () => {
   const favoriteItems = useAppSelector(favoriteItemsSelector)
   const initRequestState = useAppSelector(initRequestSelector)
 
-  const [items, setItems] = useState<CardData[]>(data || [])
+  const [items, setItems] = useState<CardData[]>(data?.data || [])
 
   useEffect(() => {
-    if (data?.length) {
-      setItems(data)
+    if (data?.data.length) {
+      setItems(data.data)
       return
     }
 
@@ -56,13 +57,13 @@ export const Main = () => {
           Произошла ошибка, не удалось загрузить данные!
         </Typography.Text>
       )}
-      {!data?.length && !initRequestState && (
+      {!data?.data.length && !initRequestState && (
         <Typography.Text view="primary-large" weight="medium" tag="p">
           Все карточки удалены. Обновите, пожалуйста, страницу!
         </Typography.Text>
       )}
 
-      {!!data?.length && <Gallery items={items} />}
+      {!!data?.data.length && <Gallery items={items} />}
     </div>
   )
 }
