@@ -1,5 +1,6 @@
 import { Typography } from '@alfalab/core-components/typography/component'
 import { Link } from 'react-router-dom'
+
 import { Button } from '../../components/Button/Button'
 import { Gallery } from '../../components/Gallery/Gallery'
 import { useAppSelector } from '../../hook'

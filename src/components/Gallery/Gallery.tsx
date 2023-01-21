@@ -1,5 +1,6 @@
 import { FC, useState } from 'react'
 import { Gallery as AlphaGallery } from '@alfalab/core-components/gallery'
+
 import { Card } from '../Card/Card'
 import { CardData } from '../../types'
 import { favoriteItemsSelector } from '../../store/selectors/cardsData'
@@ -36,7 +37,7 @@ export const Gallery: FC<Props> = ({ items }) => {
             isFavorite={favoriteItems.includes(item.id)}
             openGallery={openGallery}
             key={item.image_link}
-          ></Card>
+          />
         ))}
       </div>
 

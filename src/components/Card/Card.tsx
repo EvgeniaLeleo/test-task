@@ -87,10 +87,7 @@ export const Card: FC<Props> = ({
                 <HeartLineMIcon className={styles.icon} />
               )}
             </span>
-            <TrashCanLineMIcon
-              onClick={handleDelete}
-              className={styles.icon}
-            ></TrashCanLineMIcon>
+            <TrashCanLineMIcon onClick={handleDelete} className={styles.icon} />
           </div>
         </div>
         <div>
