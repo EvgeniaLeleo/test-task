@@ -1,7 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-import { NUMBER_OF_CARDS, URL_API } from '../constants'
-import { CardData } from '../types'
+import { URL_API } from '../constants'
+import { Data } from '../types'
 
 export const cardsDataApi = createApi({
   reducerPath: 'cardsDataApi',
@@ -9,8 +9,8 @@ export const cardsDataApi = createApi({
     baseUrl: URL_API,
   }),
   endpoints: (builder) => ({
-    getItems: builder.query<CardData[], void>({
-      query: () => `animals/rand/${NUMBER_OF_CARDS}`,
+    getItems: builder.query<Data, void>({
+      query: () => 'characters',
     }),
   }),
 })

@@ -1,5 +1,6 @@
 import { FC, useState } from 'react'
 import { Gallery as AlphaGallery } from '@alfalab/core-components/gallery'
+
 import { Card } from '../Card/Card'
 import { CardData } from '../../types'
 import { favoriteItemsSelector } from '../../store/selectors/cardsData'
@@ -32,11 +33,11 @@ export const Gallery: FC<Props> = ({ items }) => {
           <Card
             item={item}
             index={index}
-            id={item.id}
-            isFavorite={favoriteItems.includes(item.id)}
+            id={item._id}
+            isFavorite={favoriteItems.includes(item._id)}
             openGallery={openGallery}
-            key={item.image_link}
-          ></Card>
+            key={item.imageUrl}
+          />
         ))}
       </div>
 
@@ -44,7 +45,7 @@ export const Gallery: FC<Props> = ({ items }) => {
         <AlphaGallery
           open={open}
           onClose={closeGallery}
-          images={items.map((item) => ({ ...item, src: item.image_link }))}
+          images={items.map((item) => ({ ...item, src: item.imageUrl }))}
           initialSlide={initialSlide}
         />
       )}

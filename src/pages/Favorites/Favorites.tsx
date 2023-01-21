@@ -1,5 +1,6 @@
 import { Typography } from '@alfalab/core-components/typography/component'
 import { Link } from 'react-router-dom'
+
 import { Button } from '../../components/Button/Button'
 import { Gallery } from '../../components/Gallery/Gallery'
 import { useAppSelector } from '../../hook'
@@ -23,7 +24,7 @@ export const Favorites = () => {
       )}
 
       <Gallery
-        items={data?.filter((item) => favoriteItems.includes(item.id))}
+        items={data?.data.filter((item) => favoriteItems.includes(item._id))}
       />
     </div>
   )
